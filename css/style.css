@@ -1,0 +1,26 @@
+select {
+  width: 10%;
+  height: 40px;
+  font-size: 18px;
+}
+#table-wrapper {
+  display: none;
+}
+table {
+  width: 800px;
+  text-align: right;
+}
+tr:hover {
+  background-color: antiquewhite;
+}
+th {
+  background-color: white;
+  font-size: 90%;
+  font-weight: bold;
+  border-bottom: 2px solid #111;
+  text-align: center;
+}
+th,
+td {
+  padding: 5px 5px 10px 10px;
+}
