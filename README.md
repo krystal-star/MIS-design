@@ -1,4 +1,6 @@
-# MIS-design-day1
+# MIS-design
+
+**day1**
 
 Guidance: http://ife.baidu.com/course/detail/id/53
 
