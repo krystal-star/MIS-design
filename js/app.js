@@ -10,3 +10,4 @@ getCheckBox(divProduct,2);
 
 divRegion.onchange = change;
 divProduct.onchange = change;
+

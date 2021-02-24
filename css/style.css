@@ -7,7 +7,7 @@ select {
   display: none;
 }
 table {
-  width: 800px;
+  width: 700px;
   text-align: right;
 }
 tr:hover {
@@ -23,4 +23,7 @@ th {
 th,
 td {
   padding: 5px 5px 10px 10px;
+}
+#bar,#line{
+  display: inline-block;
 }
