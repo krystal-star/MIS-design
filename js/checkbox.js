@@ -29,7 +29,7 @@ function getCheckBox(div,num){
 
 function getChecked(num){
     //获取checked的inputs
-    var boxes = document.querySelectorAll("input");
+    var boxes = document.querySelectorAll("div.radios > input");
     var checkedRegion = [0,1,2], checkedProduct = [0,1,2];
     for(var i=0; i<boxes.length;i++){
         if(boxes[i].checked == false && i < 3){
@@ -91,7 +91,8 @@ function getNewTable(){
         var sales = regionData[i].sale
         for(var j=0;j<sales.length; j++){
             var newTd = document.createElement("td")
-            newTd.innerHTML = sales[j];
+            newTd.innerHTML = "<input type='text' value="+sales[j]+" size=5>";
+            newTd.id = "sale";
             newTr.appendChild(newTd);
         }
         //row
@@ -113,7 +114,7 @@ function format(){
     var regionNum = getChecked(1), productNum = getChecked(2);
     
     if(regionNum ==1 && productNum > 1){
-        for(var i=0; i<trs.length;i++){                
+        for(var i=0; i<trs.length;i++){          
             trs[i].insertBefore(trs[i].cells[1], trs[i].cells[0]);  //交换表格两列！
             if(i%productNum == 1){   //合并
                     trs[i].cells[0].rowSpan = productNum;
