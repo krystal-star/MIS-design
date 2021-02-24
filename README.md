@@ -11,3 +11,4 @@ have completed all the tasks
 Guidance: http://ife.baidu.com/course/detail/id/55
 
 SVG + Canvas to visualize data
+Now update to SVG
