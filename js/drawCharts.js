@@ -8,9 +8,14 @@ table[0].addEventListener("mouseover", function(e){
         }else{
             var tr = target.parentNode.parentNode;
         }        
-        var inputs = tr.querySelectorAll("input");
-        for(var i=0;i<inputs.length;i++){           
-            targetData.push(Number(inputs[i].value));
+        var tds = tr.querySelectorAll("td.sale");
+        for(var i=0;i<tds.length;i++){
+            isRealNum(tds[i].innerHTML)
+            if(!isRealNum(tds[i].innerHTML)){
+                targetData.push(0);
+            }else{
+                 targetData.push(Number(tds[i].innerHTML));
+            }                      
         }
         //console.log(targetData);
         barPlot(targetData);

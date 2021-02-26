@@ -91,8 +91,9 @@ function getNewTable(){
         var sales = regionData[i].sale
         for(var j=0;j<sales.length; j++){
             var newTd = document.createElement("td")
-            newTd.innerHTML = "<input type='text' value="+sales[j]+" size=5>";
-            newTd.id = "sale";
+            newTd.innerHTML = sales[j];
+            newTd.className = "sale";
+            newTd.setAttribute("editType","false");
             newTr.appendChild(newTd);
         }
         //row

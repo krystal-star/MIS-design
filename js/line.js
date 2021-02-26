@@ -9,7 +9,7 @@ function lineChart(array){
         //x-axis
         ctx.beginPath();
         ctx.moveTo(20, max);
-        ctx.lineTo(750, max);
+        ctx.lineTo(450, max);
         ctx.stroke();
         //y-axis
         ctx.beginPath();
