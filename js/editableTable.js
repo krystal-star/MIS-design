@@ -25,18 +25,22 @@ function addInput(td,value){
         
        //改变状态变量  
        td.setAttribute("editType", "true"); 
-        
-       textBox.onkeydown =  function(e){
-        if(e.keyCode == 13){
-            confirm(this.parentNode, value, textBox.value);
-        }
-        else if(e.keyCode == 27){
-            cancelEdit(this.parentNode,value);
-        }
-        }
-       
+      
        //设置文本框的失去焦点事件  
-       textBox.onblur = function (){  
+        textBox.addEventListener("blur",doBlur);
+        
+        textBox.onkeydown =  function(e){          
+            if(e.keyCode == 13){
+                textBox.removeEventListener("blur", doBlur);    //处理onblur和onkeydown的冲突
+                confirm(this.parentNode, value, textBox.value);
+            }
+            else if(e.keyCode == 27){
+                textBox.removeEventListener("blur", doBlur);
+                cancelEdit(this.parentNode,value);
+            }
+        }
+
+        function doBlur(){
             confirm(this.parentNode, value, textBox.value);  
         }  
 
