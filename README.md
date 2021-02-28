@@ -15,4 +15,4 @@ SVG + Canvas to visualize data
 
 Guidance: http://ife.baidu.com/course/detail/id/56
 
-Make the table editable (LocalStorage) (updating...)
+Make the table editable and save the changes by LocalStorage

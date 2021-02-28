@@ -3,7 +3,7 @@ function getCheckBox(div,num){
     div.querySelectorAll("button")[0].onclick = function(){
         var val = getChecked(num);
         //console.log(val);
-        if(val == 3){
+        if(val === 3){
             div.setAttribute("checkbox-type","all");
         }else{
             div.setAttribute("checkbox-type","none");
@@ -55,6 +55,7 @@ function change(){
     removeTable();
     getNewTable();
     format();
+    showBtn();
 }     
 
 function getData(){
@@ -66,7 +67,10 @@ function getData(){
     for(var j=0; j<sourceData.length; j++){
         if(checkedRegion.indexOf(dictRegion[sourceData[j].region]) != -1 && 
         checkedProduct.indexOf(dictProduct[sourceData[j].product]) != -1){
-            targetData.push(sourceData[j]);
+            var row = {}
+            row.data = sourceData[j];
+            row.index = j;
+            targetData.push(row);
         }
     }
     
@@ -80,15 +84,19 @@ function getNewTable(){
         newTr.id = "data";
         //product
         var newTd1 = document.createElement("td");
-        newTd1.innerHTML = regionData[i].product;
+        newTd1.innerHTML = regionData[i].data.product;
         newTr.appendChild(newTd1);
         //region
         var newTd2 = document.createElement("td");
-        newTd2.innerHTML = regionData[i].region;
+        newTd2.innerHTML = regionData[i].data.region;
         newTr.appendChild(newTd2);
 
-        //sale
-        var sales = regionData[i].sale
+        //sale 读取localStorage里的数据
+        if(localStorage.data){
+            var sales = JSON.parse(localStorage.data)[regionData[i].index];
+        }else{
+            var sales = regionData[i].data.sale;
+        }
         for(var j=0;j<sales.length; j++){
             var newTd = document.createElement("td")
             newTd.innerHTML = sales[j];
@@ -96,6 +104,7 @@ function getNewTable(){
             newTd.setAttribute("editType","false");
             newTr.appendChild(newTd);
         }
+        
         //row
         table[0].appendChild(newTr);
     }
@@ -141,5 +150,15 @@ function format(){
                 }
             }
         }
+    }
+}
+
+function showBtn(){
+    if(getChecked(1) === 3 && getChecked(2) === 3){
+        console.log("checked");
+        document.getElementById("save").style = "display: block";
+        document.getElementById("save_tip").style = "display: none";
+    }else{
+        document.getElementById("save").style = "display: none";
     }
 }

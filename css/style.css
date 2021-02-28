@@ -39,3 +39,6 @@ th,td:hover{
 td.sale:hover{
   cursor: pointer;
 }
+button#save{
+  display: none;
+}
