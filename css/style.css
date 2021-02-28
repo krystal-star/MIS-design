@@ -7,7 +7,7 @@ select {
   display: none;
 }
 table {
-  width: 700px;
+  width: 1200px;
   text-align: right;
 }
 tr:hover {
@@ -21,9 +21,24 @@ th {
   text-align: center;
 }
 th,
-td {
-  padding: 5px 5px 10px 10px;
+td,
+table{
+  padding: 5px 5px 10px 5px;
 }
-#bar,#line{
+td{
+  width: 200px;
+}
+#bar,
+#line,
+table{
   display: inline-block;
+}
+th,td:hover{
+  cursor: default;
+}
+td.sale:hover{
+  cursor: pointer;
+}
+button#save{
+  display: none;
 }

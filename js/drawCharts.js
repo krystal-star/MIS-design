@@ -1,16 +1,21 @@
 var table = document.querySelectorAll("#table-wrapper > table");
 table[0].addEventListener("mouseover", function(e){
     var target = e.target;
-    if(target.nodeName.toLowerCase() == "td"){
-        var targetData = []
-        var tr = target.parentNode;  //父节点
-        if(tr.cells.length == 14){
-            var i = 2;
+    if(target.nodeName.toLowerCase() == "td" || target.nodeName.toLowerCase() == "input"){
+        var targetData = [];
+        if(target.nodeName.toLowerCase() == "td"){
+            var tr = target.parentNode;  //父节点
         }else{
-            var i = 1;
-        }
-        for(i;i<tr.cells.length;i++){
-            targetData.push(Number(tr.cells[i].innerHTML));
+            var tr = target.parentNode.parentNode;
+        }        
+        var tds = tr.querySelectorAll("td.sale");
+        for(var i=0;i<tds.length;i++){
+            isRealNum(tds[i].innerHTML)
+            if(!isRealNum(tds[i].innerHTML)){
+                targetData.push(0);
+            }else{
+                 targetData.push(Number(tds[i].innerHTML));
+            }                      
         }
         //console.log(targetData);
         barPlot(targetData);
